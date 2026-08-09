@@ -1,6 +1,8 @@
-# Deploy Workflow
+# Deploy Workflow 🌱
 
-CI tests your code. CD (Continuous Deployment/Delivery) ships it. A deploy workflow runs after a merge to `main` and pushes the new version to wherever it needs to go.
+## 📖 In plain words
+
+If CI is "test the code automatically," CD (Continuous Deployment/Delivery) is "ship the code automatically." A deploy workflow is just another GitHub Actions workflow — triggered after a merge to `main` — whose job is to push the new version out to wherever it actually needs to run.
 
 For a platform engineer: this is your GitOps pipeline. Code merge → automated deploy → running in cluster. The same pattern you know from ArgoCD, but triggered by GitHub Actions instead of watching a repo.
 
@@ -117,3 +119,12 @@ jobs:
 ```
 
 A three-stage pipeline: test → deploy-staging → deploy-production. Each step is gated.
+
+---
+
+## ✅ Quick recap
+
+- Deploy workflow = a GitHub Actions workflow that runs after CI passes, shipping the new version.
+- `needs: test` gates deploy on CI passing first.
+- GitHub Environments add approval gates, wait timers, and per-environment secrets.
+- GitOps pattern: the workflow commits an updated manifest; a tool like ArgoCD picks it up and deploys.

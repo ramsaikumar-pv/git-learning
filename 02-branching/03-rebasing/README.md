@@ -1,18 +1,20 @@
-# Rebasing
+# Rebasing 🌱
 
-Rebase is the alternative to merge. Both integrate changes from one branch into another. The difference is in the history they produce.
+## 📖 In plain words
 
-Infrastructure analogy: rebase is like replaying your config changes on top of a newer base image. Your changes are the same — they're just applied on top of something more recent.
+Rebase is a second way (besides merge) to bring one branch's changes into another. Both end with your work joined into `main`. The difference is purely about what the *history* looks like afterward — messy and branching (merge), or clean and straight-line (rebase).
+
+Infrastructure analogy: rebase is like replaying your config changes on top of a newer base image. Your changes are the same — they're just reapplied on top of something more recent, as if you'd started from there in the first place.
 
 ---
 
 ## The problem rebase solves
 
-You branched off `main` three days ago. Since then, teammates have merged six things into `main`. Your branch is behind.
+Picture this: you branched off `main` three days ago. Since then, teammates have merged six other things into `main`. Your branch is now "behind" — it doesn't have those updates.
 
-With **merge**, you'd create a merge commit that has two parents — your work + main's updates. The graph gets bushy.
+With **merge**, catching up would create a merge commit with two parents — your work plus main's updates tangled together. Do this often and the history graph gets messy and hard to follow.
 
-With **rebase**, Git replays your commits on top of the latest `main`. The graph stays linear.
+With **rebase**, Git instead picks up your commits, sets them aside for a moment, and replays them one by one on top of the newest `main` — as if you'd started your branch today instead of three days ago. The result: a single, clean, straight line of history.
 
 ---
 
@@ -31,7 +33,7 @@ After:
   feature/login: A → B → C → D → E' → F'
 ```
 
-E and F become E' and F' — new commits with new hashes, but the same changes. Git replayed them on top of D.
+Notice E and F become E' and F' — brand new commits with brand new hashes, even though the actual code changes are identical. This matters: because the hash changed, Git now sees these as completely different commits from the originals. Keep this in mind — it's the whole reason for the golden rule below.
 
 ---
 
@@ -77,8 +79,17 @@ git rebase --abort
 
 ---
 
-## The golden rule of rebasing
+## The golden rule of rebasing ⚠️
 
-**Never rebase commits that have been pushed to a shared remote branch.**
+**Never rebase commits that have already been pushed to a shared remote branch (one others are pulling from).**
 
-Rebase rewrites commit hashes. If you rebase and push (force), anyone who pulled the old commits will have a broken history. On your local, private branch: rebase freely. Once pushed: merge only.
+Why: as you just saw, rebase gives every replayed commit a brand-new hash. If you rebase commits that a teammate already has, and then force-push, their copy of history and yours no longer match — Git will call this a broken history, and untangling it is painful. Simple rule to remember: on your own private, unpushed branch — rebase as freely as you like. The moment it's pushed and shared: merge only.
+
+---
+
+## ✅ Quick recap
+
+- Rebase = replay your commits on top of the latest `main`. Result: clean, linear history.
+- Merge = combine two branches as-is. Result: a merge commit, branching history.
+- Rebased commits get new hashes — treat them as "different" from the originals.
+- Golden rule: never rebase commits others have already pulled.

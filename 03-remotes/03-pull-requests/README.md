@@ -1,8 +1,10 @@
-# Pull Requests
+# Pull Requests 🌱
 
-A pull request (PR) is not a Git concept — it's a GitHub feature. It's a request to merge your branch into another branch, with a conversation layer on top.
+## 📖 In plain words
 
-In an OpenShift context, think of a PR like a Gitops change review: your proposed config change is in a branch, someone reviews it before it gets applied to the cluster. PRs are the code review gate.
+A pull request (PR) is not something Git itself knows about — it's a feature built by GitHub, on top of Git. In plain words: it's a formal way of saying "hey, please review my branch and merge it in if it looks good" — with comments, approvals, and discussion attached, right there on the page.
+
+In an OpenShift context, think of a PR like a GitOps change review: your proposed config change sits in a branch, someone reviews it before it gets applied to the cluster. That review step is exactly what a PR gives you for code.
 
 ---
 
@@ -46,13 +48,15 @@ Fill in:
 
 ## Merge options (on GitHub)
 
+GitHub gives you three buttons for finishing a PR — each produces a different-looking history, but the end result (your code, now in `main`) is the same:
+
 | Method | What it does | History |
 |--------|-------------|---------|
-| **Merge commit** | 3-way merge, keeps all commits | Bushy graph |
-| **Squash and merge** | All commits → one commit | Clean, linear |
-| **Rebase and merge** | Replays commits on main, no merge commit | Clean, linear |
+| **Merge commit** | Standard 3-way merge, keeps every individual commit | Bushy graph |
+| **Squash and merge** | Combines all your commits into a single new one | Clean, linear |
+| **Rebase and merge** | Replays each commit onto main, no merge commit added | Clean, linear |
 
-Your team picks one convention and sticks to it. Many platform teams prefer squash for clean history.
+You don't need to decide this yourself every time — your team agrees on one option and sticks to it. Many platform teams prefer squash, since it keeps `main`'s history simple: one commit per feature, no clutter.
 
 ---
 
@@ -77,3 +81,12 @@ Open a PR as "Draft" to signal it's not ready for review yet but you want CI to 
 # via gh CLI
 gh pr create --draft --title "WIP: my feature"
 ```
+
+---
+
+## ✅ Quick recap
+
+- A PR = a GitHub feature (not a Git command) requesting review before merging a branch.
+- Lifecycle: branch → commit → push → open PR → review → address feedback → merge → delete branch.
+- Merge, squash, or rebase — three ways to finish a PR, each shaping history differently.
+- Draft PRs signal "not ready for review yet" while still enabling CI and visibility.

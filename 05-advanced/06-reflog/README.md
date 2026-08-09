@@ -1,10 +1,10 @@
-# git reflog
+# git reflog 🌱
 
-The safety net you didn't know you had.
+## 📖 In plain words
 
-`git reflog` records every single movement of HEAD. Every commit, every reset, every checkout, every rebase, every merge — all logged. It's Git's black box flight recorder.
+This is the safety net you didn't know you had. `git reflog` quietly records every single move `HEAD` has ever made on your machine — every commit, reset, checkout, rebase, merge. Think of it as Git's flight recorder, logging everything in the background whether you asked it to or not.
 
-Even after `git reset --hard`, the old commits still exist in the object database (until garbage collection runs, typically 90 days). Reflog lets you find them.
+Here's why that matters: even after something scary like `git reset --hard` seems to delete your work, the actual commits usually still exist behind the scenes (until Git's garbage collector eventually cleans them up, typically after 90 days). Reflog is how you find and recover them.
 
 ---
 
@@ -88,3 +88,12 @@ After expiry, `git gc` removes them permanently. This is why you can't recover c
 | Doesn't show reset-away commits | Shows "lost" commits |
 | Permanent | Expires |
 | Shared (pushed to remote) | Local only |
+
+---
+
+## ✅ Quick recap
+
+- `git reflog` — a local log of every place `HEAD` has pointed, even after resets or deletions.
+- Recover "lost" work: find the commit hash in reflog, then `reset --hard`, `cherry-pick`, or branch from it.
+- Reflog entries eventually expire (~90 days) — it's a safety net, not permanent history.
+- Local only — reflog never gets pushed or shared with anyone else.

@@ -61,6 +61,7 @@
 - [ ] Opening a pull request on GitHub
 - [ ] Reviewing and merging a PR
 - [ ] Branch protection basics
+- [ ] Module 3 graded assessment (`03-remotes/04-assessment`) — complete after all topics above
 
 ---
 
@@ -131,13 +132,13 @@
 ## 📅 Last Session
 
 ```
-Date        : 2026-08-09
-Reviewed    : git branch -M main (rename default branch), git remote add origin
-              Understood -M (force rename) vs -m (safe rename) — explained correctly ✅
-Current     : 03-remotes — forking and PRs still pending
-Next up     : git diff (not done hands-on yet)
+Date        : August 2026
+Completed   : Merge conflicts (hands-on) ✅ — all module READMEs rewritten for beginner clarity ✅
+Current     : 03-remotes — forking and PRs
+Next up     : git diff, git stash
 Blockers    : none
-Notes       : Module 4 graded assessment pending after all Module 3 topics done
+Notes       : Module 3 graded assessment added (03-remotes/04-assessment) — complete it after
+               forking + PRs, before starting 04-intermediate
 ```
 
 > Update the block above after every session.

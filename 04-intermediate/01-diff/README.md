@@ -1,6 +1,10 @@
-# git diff
+# git diff 🌱
 
-`git diff` shows you what changed. It's your before/after view of the working directory, staging area, or between any two commits.
+## 📖 In plain words
+
+`git diff` answers one question: "what exactly changed?" It shows you a before/after comparison — line by line — between any two versions of your files: your unsaved edits vs. the last commit, what's staged vs. the last commit, or even between two totally different commits.
+
+Think of it like Word's "Track Changes" view, but for any two snapshots you choose.
 
 ---
 
@@ -10,7 +14,7 @@
 git diff
 ```
 
-Shows what you've changed but haven't staged yet. If everything is staged, this shows nothing.
+Running `git diff` with no options shows what you've edited but haven't staged yet. If you've already staged everything with `git add`, this command shows nothing — because there's no *unstaged* difference left to show.
 
 ```
 diff --git a/app.py b/app.py
@@ -25,7 +29,7 @@ index 3f8c1a2..7b4d2e1 100644
      return True
 ```
 
-Lines starting with `+` were added. Lines starting with `-` were removed. The `@@` line shows which line numbers were affected.
+How to read this: lines starting with `+` (usually shown in green) were added. Lines starting with `-` (usually red) were removed. Unmarked lines are just there for context, so you can see where the change sits. The `@@` line is a location marker telling you which line numbers were affected — you can safely ignore the exact numbers at first and just focus on the `+`/`-` lines.
 
 ---
 
@@ -86,3 +90,12 @@ git diff --stat HEAD~1 HEAD
 ```
 
 Just the count of changes per file. Good for a quick overview before diving into details.
+
+---
+
+## ✅ Quick recap
+
+- `git diff` — unstaged changes vs. last commit.
+- `git diff --staged` — staged changes vs. last commit (use this right before committing).
+- `git diff <commit1> <commit2>` — compare any two commits or branches.
+- Lines with `+` were added, lines with `-` were removed.

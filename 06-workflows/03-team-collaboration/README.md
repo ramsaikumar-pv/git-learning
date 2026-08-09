@@ -1,6 +1,8 @@
-# Team Collaboration
+# Team Collaboration 🌱
 
-Git is a technical tool. But using it in a team is as much about conventions and communication as it is about commands. This module covers the practices that make shared repos work smoothly.
+## 📖 In plain words
+
+Git itself is just a tool. Using it well *in a team* is a different skill — it's about agreed conventions, respectful review habits, and a few GitHub settings that keep everyone honest. This module is less about commands and more about the practices that make shared repos pleasant to work in.
 
 ---
 
@@ -99,3 +101,12 @@ ci: add parallel test execution
 ```
 
 With conventional commits, you can auto-generate changelogs and enforce semver bumps automatically.
+
+---
+
+## ✅ Quick recap
+
+- Branch protection rules — require PRs, reviews, and passing CI before anything merges to `main`.
+- CODEOWNERS — auto-assigns the right reviewers based on which files changed.
+- Good PRs are small, clearly titled, and explain what/why/how-tested.
+- Review with kindness: comment on the code, not the person; distinguish blocking vs. `nit:` feedback.

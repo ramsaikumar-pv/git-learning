@@ -1,6 +1,8 @@
-# GitHub Actions Basics
+# GitHub Actions Basics 🌱
 
-GitHub Actions is GitHub's built-in CI/CD system. When code is pushed, a workflow file triggers automatically and runs a sequence of steps on a hosted runner (a temporary Linux/Windows/macOS VM).
+## 📖 In plain words
+
+GitHub Actions lets GitHub automatically *do things* for you whenever something happens in your repo — most commonly, whenever code is pushed. You describe what should happen in a YAML file; GitHub spins up a temporary computer (called a runner) and follows your instructions step by step, then throws the computer away when done.
 
 For a platform engineer: think of it like a Kubernetes Job that runs on a trigger. The runner is the pod, the steps are the container commands, the workflow file is the Job spec.
 
@@ -98,3 +100,12 @@ Almost every workflow starts with this. It clones your repo into the runner:
 ```
 
 Without this, the runner has no code to work with.
+
+---
+
+## ✅ Quick recap
+
+- A workflow = a YAML file in `.github/workflows/`, triggered automatically by events like `push`.
+- `jobs` run in parallel, each on its own runner. `steps` inside a job run in order.
+- `uses` runs a pre-built action; `run` runs a raw shell command.
+- Almost every workflow starts with `actions/checkout@v4` to get your code onto the runner.

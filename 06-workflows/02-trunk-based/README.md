@@ -1,8 +1,10 @@
-# Trunk-Based Development
+# Trunk-Based Development 🌱
 
-Trunk-based development (TBD) is the opposite of Gitflow. Instead of long-lived branches, everyone commits directly to `main` (the "trunk") — or uses very short-lived branches (< 1 day) that merge immediately.
+## 📖 In plain words
 
-This is how Google, Facebook, and most high-velocity engineering teams work.
+Trunk-based development (TBD) flips Gitflow's philosophy: instead of long-lived branches for each feature, everyone works directly against `main` (nicknamed the "trunk"), or on branches so short-lived (under a day) they barely count as branches at all.
+
+This is how Google, Facebook, and most high-velocity engineering teams operate — fewer branches, less to reconcile, faster shipping.
 
 ---
 
@@ -70,3 +72,12 @@ Squash merge keeps `main`'s history clean.
 | Feature hiding | Not built in | Feature flags |
 | Merge conflicts | Big and rare | Small and frequent |
 | Team size | Works for any size | Scales best with CI culture |
+
+---
+
+## ✅ Quick recap
+
+- Trunk-based development = everyone commits to `main` directly, or on very short-lived branches.
+- Depends on: mandatory CI, small frequent commits, feature flags for hiding unfinished work.
+- Feature flags separate "code is deployed" from "feature is visible to users."
+- Best for continuous delivery; Gitflow suits scheduled releases better.

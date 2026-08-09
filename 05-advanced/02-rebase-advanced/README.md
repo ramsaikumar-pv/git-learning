@@ -1,8 +1,10 @@
-# Interactive Rebase
+# Interactive Rebase 🌱
 
-Interactive rebase (`git rebase -i`) lets you rewrite your commit history before sharing it. You can squash messy "WIP" commits, fix typos in messages, reorder commits, or split a commit into two.
+## 📖 In plain words
 
-It's a power tool. Use it on local branches before pushing.
+Regular rebase (module 02-03) replays your commits automatically. Interactive rebase (`git rebase -i`) hands you the controls: before those commits go anywhere, you get to edit, combine, reorder, or delete them — cleaning up a messy work-in-progress history into something readable, before anyone else sees it.
+
+This is a power tool. Use it only on your own local branches, before you've pushed and shared them.
 
 ---
 
@@ -106,4 +108,13 @@ All modified commits get new hashes. If you've pushed this branch, you'll need t
 git push --force-with-lease origin feature/my-branch
 ```
 
-Never do this on `main` or shared branches.
+Never do this on `main` or shared branches — same golden rule from module 02-03: don't rewrite history others may already have.
+
+---
+
+## ✅ Quick recap
+
+- `git rebase -i HEAD~N` — opens an editable list of your last N commits.
+- `squash`/`s` — fold into the previous commit. `fixup`/`f` — same, but discard the message.
+- `reword`/`r` — edit a message. `drop`/`d` — delete a commit. Reordering lines reorders commits.
+- After rewriting, you'll need `git push --force-with-lease` if already pushed — but never on shared branches.

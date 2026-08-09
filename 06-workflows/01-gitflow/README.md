@@ -1,6 +1,8 @@
-# Gitflow
+# Gitflow 🌱
 
-Gitflow is a branching strategy invented by Vincent Driessen in 2010. It defines specific branch names and merge rules for managing a release cycle with multiple environments.
+## 📖 In plain words
+
+Gitflow is simply an agreed-upon *set of rules* for what branches to create and when — nothing new about Git itself, just a shared convention a team follows. It was invented by Vincent Driessen in 2010 to answer a common question: "when we have features, releases, and emergency fixes all happening at once, which branch does what?"
 
 Think of it like a formal promotion pipeline: feature → develop → release → main, with hotfix lanes for prod emergencies.
 
@@ -78,3 +80,12 @@ git branch -d release/1.2
 - SaaS where you only support the current version
 
 Gitflow was designed for software shipped on a release schedule (CDs, binaries, desktop apps). For continuous delivery, see module 06-02.
+
+---
+
+## ✅ Quick recap
+
+- Gitflow = a set of team conventions for branch names and merge rules, not a Git feature.
+- Branches: `main` (prod), `develop` (integration), `feature/*`, `release/*`, `hotfix/*`.
+- Good fit for scheduled releases and multiple supported versions.
+- Poor fit for fast-shipping web apps — see trunk-based development next.

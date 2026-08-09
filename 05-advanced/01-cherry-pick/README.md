@@ -1,6 +1,8 @@
-# Cherry-Pick
+# Cherry-Pick 🌱
 
-Cherry-pick applies a specific commit from one branch onto another branch. You're not merging the whole branch — you're picking one commit and replaying it.
+## 📖 In plain words
+
+Merge and rebase both bring over an *entire branch's* worth of commits. Cherry-pick is more surgical: it grabs just one specific commit from anywhere in history and replays it onto your current branch — like picking a single cherry off a tree instead of taking the whole branch.
 
 The analogy: you have 10 Helm chart changes across a feature branch. Prod needs just one of them right now — a critical timeout fix. Cherry-pick lets you apply just that one commit to the release branch without bringing everything else.
 
@@ -68,4 +70,13 @@ Useful when you want to combine multiple cherry-picks into one commit.
 | Moving ALL commits from one branch to another | No — use merge or rebase instead |
 | Duplicating commits frequently | No — signals a workflow problem |
 
-Cherry-pick creates duplicate commits (same changes, different hashes). If you later merge the source branch, you'll get the original commit AND the cherry-pick. This can cause confusion in the log. Use it surgically.
+Worth remembering: cherry-pick creates a duplicate commit — same changes, but a brand-new hash. If you later merge the branch you cherry-picked from, you'll end up with both the original commit AND the cherry-picked copy in your log. That's fine occasionally, but confusing if overused — use cherry-pick surgically, not as your default way of moving code around.
+
+---
+
+## ✅ Quick recap
+
+- Cherry-pick = apply one specific commit onto your current branch, not the whole branch.
+- `git cherry-pick <hash>` — the new commit has the same changes but a different hash.
+- Good for: hotfixes that need to land on a release branch without the rest of a feature.
+- Overusing it creates duplicate commits — use sparingly.

@@ -1,8 +1,10 @@
-# git bisect
+# git bisect 🌱
 
-A bug appeared in prod. You know it worked at commit `v1.0`. It's broken now. You have 200 commits in between. Which one introduced the bug?
+## 📖 In plain words
 
-`git bisect` binary-searches your commit history to find it. It takes O(log n) steps instead of O(n). 200 commits → about 8 checks.
+A bug appeared in prod. You know it worked at commit `v1.0`. It's broken now, and there are 200 commits in between. Checking each one by hand would take forever.
+
+`git bisect` does this the smart way — a binary search through your history, like the "guess a number between 1 and 100" game where each guess halves the range. Instead of testing all 200 commits, you'll typically need to test around 8.
 
 ---
 
@@ -93,5 +95,14 @@ If a commit can't be tested (doesn't compile, CI is broken):
 ```bash
 git bisect skip
 ```
+
+---
+
+## ✅ Quick recap
+
+- `git bisect` — binary search through history to find which commit broke something.
+- `git bisect start` → `bad` → `good <ref>` → Git checks out the midpoint, you test it.
+- Mark each as `good` or `bad` until Git names the first bad commit.
+- `git bisect run <script>` — automate the whole search with a test script.
 
 Git moves to the nearest testable commit.

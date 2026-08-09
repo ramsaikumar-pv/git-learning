@@ -1,6 +1,10 @@
-# Git Hooks
+# Git Hooks 🌱
 
-Hooks are scripts that Git runs automatically at specific points in its workflow. They live in `.git/hooks/`. They're the closest thing Git has to admission webhooks in OpenShift — pre-flight checks that run before an action completes.
+## 📖 In plain words
+
+A hook is just a small script that Git automatically runs at a specific moment — like "right before a commit is created" or "right after a merge." You write the script, Git calls it for you, no extra setup needed beyond placing the file in the right spot.
+
+They're the closest thing Git has to admission webhooks in OpenShift — pre-flight checks that run before an action completes and can even block it.
 
 ---
 
@@ -88,3 +92,12 @@ git commit --no-verify -m "Emergency: bypass hooks"
 ```
 
 This skips all pre-commit and commit-msg hooks. Use only in genuine emergencies — it defeats the whole point of having hooks.
+
+---
+
+## ✅ Quick recap
+
+- Hooks = scripts Git runs automatically at specific points (commit, push, merge, etc.).
+- They live in `.git/hooks/` and are local-only — not committed or shared automatically.
+- `pre-commit` — the most common hook, runs before a commit is saved (lint, secret checks).
+- `git commit --no-verify` — bypasses hooks. Emergency use only.

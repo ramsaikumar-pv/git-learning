@@ -1,6 +1,8 @@
-# Tags
+# Tags 🌱
 
-Tags are named bookmarks for specific commits. Where branches move forward as you add commits, tags stay fixed — they mark a commit forever. Use them to label releases.
+## 📖 In plain words
+
+A tag is a permanent bookmark 🔖 on one specific commit. The key difference from a branch: branches keep moving forward as you add commits, but a tag never moves — once placed, it always points to that exact same commit, forever. That makes tags perfect for marking "this exact point in history was version 1.0."
 
 In platform terms: tags are like release manifests. `v1.2.3` on a commit is the contract that says "this is what's running in prod."
 
@@ -10,7 +12,7 @@ In platform terms: tags are like release manifests. `v1.2.3` on a commit is the 
 
 ### Lightweight tag
 
-Just a pointer to a commit. No extra info. Like a branch that never moves.
+The simple version: just a label pointing at a commit, nothing more.
 
 ```bash
 git tag v1.0
@@ -18,13 +20,13 @@ git tag v1.0
 
 ### Annotated tag (preferred for releases)
 
-A full Git object with a message, author, and date. Can be GPG-signed.
+The fuller version: it stores extra info too — who created it, when, and a message explaining what this release is. It can even be cryptographically signed to prove authenticity.
 
 ```bash
 git tag -a v1.0 -m "Release 1.0 — initial stable release"
 ```
 
-Use annotated tags for anything that matters. Use lightweight for quick local bookmarks.
+Simple rule: use annotated tags for anything that matters (releases). Use lightweight tags only for quick, throwaway local bookmarks.
 
 ---
 
@@ -84,8 +86,17 @@ git push origin --delete v1.0          # delete remote tag
 git checkout v1.0
 ```
 
-This puts you in "detached HEAD" state — you're looking at the tagged commit but not on any branch. Safe for inspecting; dangerous for committing (commits won't belong to any branch). To work on a release, create a branch from the tag:
+This puts you in what's called "detached HEAD" state — you're looking at the tagged commit, but you're not "on" any branch. It's perfectly safe for just looking around. But if you make new commits here, they won't belong to any branch and can be easy to lose track of. So: fine for inspecting, risky for committing. To actually work on a release, create a proper branch starting from the tag instead:
 
 ```bash
 git switch -c hotfix/v1.0-patch v1.0
 ```
+
+---
+
+## ✅ Quick recap
+
+- Tags = permanent bookmarks on a commit. Unlike branches, they never move.
+- Lightweight tag — just a pointer. Annotated tag (`-a -m`) — has a message, preferred for releases.
+- Tags don't push automatically — use `git push origin --tags`.
+- Checking out a tag = "detached HEAD." To work on it, branch off it first.

@@ -1,6 +1,8 @@
-# CI Pipeline
+# CI Pipeline 🌱
 
-CI (Continuous Integration) means automatically building and testing every change. The goal: catch broken code before it reaches `main`.
+## 📖 In plain words
+
+CI (Continuous Integration) simply means: every time someone changes code, a robot automatically builds it and runs the tests — without anyone having to remember to do it manually. The goal is to catch broken code the moment it appears, before it ever reaches `main`.
 
 A CI pipeline for a Python service typically:
 1. Checks out code
@@ -104,3 +106,12 @@ In module 06-03, you set up branch protection. Now add:
 - Select your CI workflow as a required check
 
 This makes CI mandatory. No broken code can merge to `main`.
+
+---
+
+## ✅ Quick recap
+
+- CI pipeline = checkout → install deps → lint → test → report, all automatic.
+- `actions/cache` speeds up repeat runs by reusing downloaded dependencies.
+- `if: always()` lets a step (like cleanup or uploading results) run even after a failure.
+- Pair CI with branch protection's "required status checks" to make it truly mandatory.

@@ -38,6 +38,7 @@
 | 01-clone-push-pull | `git clone`, `git push`, `git pull`, `git fetch`, SSH | 45 min | ✅ |
 | 02-forking | Forking a repo, upstream remotes, keeping in sync | 45 min | 🔄 |
 | 03-pull-requests | Opening a PR, code review flow, merging PRs | 60 min | 🔄 |
+| 04-assessment | Graded scenario covering Modules 1–3, hands-on checkpoints | 60 min | ⏳ |
 
 ---
 
