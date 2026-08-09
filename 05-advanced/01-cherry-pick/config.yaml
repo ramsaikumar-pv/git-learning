@@ -1,0 +1,7 @@
+app:
+  name: my-service
+  port: 8080
+
+database:
+  host: localhost
+  timeout: 3

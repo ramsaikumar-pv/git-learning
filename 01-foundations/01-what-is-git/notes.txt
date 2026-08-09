@@ -1,0 +1,21 @@
+My Git learning notes — Module 01: What Is Git?
+
+Use this file to answer the questions from TASK.md.
+
+---
+
+Q: What is .git/HEAD pointing to?
+A: (write your answer here)
+
+Q: What does each line in `git log --oneline` represent?
+A: (write your answer here)
+
+Q: Can you match a commit hash to the concept of a "snapshot"?
+A: (write your answer here)
+
+---
+
+Things that surprised me:
+
+
+Things I want to revisit:

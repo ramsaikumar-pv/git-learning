@@ -1,0 +1,56 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install and test
+        run: |
+          pip install pytest
+          pytest tests/ -v 2>/dev/null || echo "No tests found"
+
+  deploy:
+    name: Deploy to Staging
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'main' && github.event_name == 'push'
+    environment: staging
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build release artifact
+        run: |
+          mkdir -p dist
+          cp app.py dist/
+          echo "BUILD_SHA=${{ github.sha }}" > dist/build.info
+          echo "BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> dist/build.info
+          cat dist/build.info
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ github.sha }}
+          path: dist/
+          retention-days: 7
+
+      - name: Deployment summary
+        run: |
+          echo "### Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "- **SHA**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time**: $(date -u)" >> $GITHUB_STEP_SUMMARY

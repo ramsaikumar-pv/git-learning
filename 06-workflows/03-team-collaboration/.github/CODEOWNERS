@@ -1,0 +1,11 @@
+# Default owners for all files
+*                   @ramsaikumar-pv
+
+# Infrastructure and config files need careful review
+*.yaml              @ramsaikumar-pv
+*.yml               @ramsaikumar-pv
+/infra/             @ramsaikumar-pv
+
+# Documentation
+/docs/              @ramsaikumar-pv
+*.md                @ramsaikumar-pv

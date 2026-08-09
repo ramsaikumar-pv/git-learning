@@ -1,0 +1,17 @@
+My Git learning notes — Module 02: Init and Config
+
+Q: What does `git status` say when there are no files?
+A:
+
+Q: Where is your name/email stored — which file?
+A:
+
+Q: What does --show-origin tell you that --list alone doesn't?
+A:
+
+---
+
+Config settings I've applied:
+
+
+Things that surprised me:

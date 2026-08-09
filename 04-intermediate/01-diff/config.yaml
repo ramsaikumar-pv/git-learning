@@ -1,0 +1,11 @@
+app:
+  name: my-service
+  port: 8080
+  log_level: info
+  debug: false
+
+database:
+  host: localhost
+  port: 5432
+  name: mydb
+  pool_size: 5

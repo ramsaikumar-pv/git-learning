@@ -1,0 +1,17 @@
+My Git learning notes — Module 04: Viewing History
+
+Q: What's the difference between git log and git show?
+A:
+
+Q: Why does the hash in git log --oneline only show 7 characters?
+A:
+
+Q: What does HEAD -> main mean in the log output?
+A:
+
+---
+
+Commit hashes I found interesting:
+
+
+My favourite git log flags so far:
