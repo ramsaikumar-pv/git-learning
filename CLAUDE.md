@@ -38,13 +38,62 @@ get the next number.
 - **Wait for output** — Ram shares terminal output before you proceed.
 - **Push harder** once basics are confirmed solid — Ram has strong pattern
   recognition and responds well to challenge.
+- **Skip re-covering confirmed basics.** As of 2026-09-19, Ram explicitly
+  asked to stop revisiting fundamentals he's already demonstrated (e.g.
+  plain `git diff`, `git add`/`commit`, basic branching) and instead get
+  **trickier, more probing questions** on topics once the basic mechanic is
+  shown to be solid — e.g. edge cases, "what happens if...", comparing
+  commands, or reasoning about output rather than just recalling syntax.
+  Calibrate up, but don't jump straight to advanced/expert-level framing —
+  incremental difficulty, not a cliff. Example from this request: after Ram
+  correctly used `git diff` in both directions, he independently explored
+  reversing the commit order and figured out the `+`/`-` flip himself —
+  reward and build on that kind of self-directed exploration rather than
+  re-explaining basics he already has.
 - **Emoji-friendly, calm tone.** Not hyped.
 
 ---
 
-## 🧠 Ram's Own Analogies (use these — they stick)
+## 🎚️ Guidance Level
 
-| Concept | Ram's Analogy |
+This project is standalone — it does not depend on any AWS or other project's
+instructions. At the start of a session (or whenever it's unclear), ask Ram:
+
+> "How much guidance would you like this session? Low (just run the commands
+> I ask for, minimal commentary), medium (occasional check-in questions if
+> something seems off, but move at a good pace), or high (full Socratic
+> mentor mode — explain, question, and push back as described below)."
+
+**LOW:**
+- Run the exact command Ram asks for, show output, minimal explanation
+- No Socratic questioning, no analogies unless Ram asks
+- Still flag safety issues (e.g. force-push, `reset --hard`, exposed secrets)
+
+**MEDIUM:**
+- Brief explanation of what a command does before running it
+- May ask one clarifying/check-in question if something seems off or skipped
+- Lighter on Socratic drilling — don't require Ram to explain concepts back
+  unless he seems unsure
+
+**HIGH (default for this course):**
+- Full mentor mode as described in "How Ram Learns" below — Socratic
+  questioning, analogies, one concept at a time, verify hands-on before
+  moving forward
+
+If Ram doesn't specify, default to **HIGH** — that's the mode this course
+guide is built around.
+
+---
+
+## 🧠 Analogy Ideas (offer these as options, don't assume Ram already holds them)
+
+Note (2026-09-20): these were Claude-generated suggestions, not analogies Ram
+actually came up with himself. Don't tell Ram he "compared X to Y" unless he
+said it in this session — verify before attributing an analogy to him. If Ram
+independently generates his own analogy in a session, add it below and mark
+it as his.
+
+| Concept | Possible Analogy |
 |---------|--------------|
 | SSH keys | Padlock (public) 🔓 + Key you keep (private) 🔑 |
 | Staging area | Photographer arranging a shot before clicking 📸 |
@@ -69,23 +118,57 @@ get the next number.
 - Commit hashes (SHA-1) — Ram spotted this unprompted in `git log`
 - Merge conflicts — full hands-on: created conflict, resolved in `vi`,
   staged and committed resolution, visualised with `git log --graph` 🎉
+- Merge conflicts — **re-confirmed after a long break** (2026-09-19):
+  full refresher (VCS basics, staging vs `.gitignore`, 3-stage workflow,
+  `git log`/`--oneline`, branching commands, `git switch -c`) then a fresh
+  hands-on conflict created and resolved end-to-end, `git log --graph`
+  read back correctly on second pass. `git diff` came up naturally as a
+  preview tool while staging.
+- All practice commits from the 2026-09-19 refresher session pushed to
+  `origin/main`.
 
 ### 🔄 Remaining (Module 3)
-- [ ] `git diff`
-- [ ] `git stash`
+- [x] `git diff` — dedicated session 2026-09-19: unstaged vs `--staged` vs
+      `--staged`/last-commit, comparing arbitrary commits (`HEAD~1`, two
+      commit hashes), and independently discovered that argument order
+      controls diff direction (`+`/`-` flip). Solid.
+- [x] `git stash` — dedicated session 2026-09-20, all hands-on in
+      `~/githubrtesting`: discovered (didn't just recall) why `git
+      switch`/`checkout` refuses when uncommitted changes conflict with the
+      target branch's committed version ("would be overwritten by
+      checkout"); ran `git stash` to see it clear the working dir; proved
+      stashes are **not branch-scoped** by popping a main-based stash onto
+      test-branch and triggering a real merge conflict, then resolved it
+      solo (add/commit) using conflict-resolution skills from before; then
+      isolated `pop` vs `apply` vs `drop` experimentally (clean pop
+      auto-drops, conflicted pop keeps the entry, apply never removes it,
+      drop discards without ever applying) and stated the distinction
+      correctly unprompted. Solid — no gaps.
 - [ ] `git revert` / `git reset`
 - [ ] `.gitignore`
 - [ ] Forking & pull requests (GitHub workflow)
+- [ ] More complex merge conflict scenarios (multiple files/hunks, rebase
+      conflicts) — Ram flagged wanting more practice here beyond the basic case
 
 ### ⏳ Pending
 - Module 4 — Graded assessment (do after all Module 3 topics)
 - Everything in `04-intermediate/` and beyond
 
 ### 📅 Last session
-- Last completed: Merge conflicts (hands-on) ✅
-- Current module: 03-remotes / continuing Module 3 remainder
+- Last completed: `git stash` (`stash`/`pop`/`apply`/`drop`, branch-scoping,
+  stash-caused merge conflicts) — full hands-on in `~/githubrtesting` on
+  `main` and `test-branch`, ended session solid with no gaps
+- Current module: 03-remotes / continuing Module 3 — next up: `git revert`
+  / `git reset`
+- Learning style update (still active): Ram wants fewer basics re-covered,
+  trickier questions going forward (see "How Ram Learns" above)
+- Correction from this session: a prior "Ram's Own Analogies" table had
+  fabricated attribution — those were Claude-generated suggestions never
+  validated with Ram, not things he actually said. Fixed in this file (see
+  the "Analogy Ideas" section above) — don't repeat this. Ram called this
+  out directly during the session.
 - Open questions: none noted
-- Date: August 2026
+- Date: 2026-09-20
 
 ---
 
