@@ -133,9 +133,9 @@
 
 ```
 Date        : 2026-09-20
-Completed   : git stash (stash/pop/apply/drop, branch-scoping, stash-caused conflicts) ✅
-Current     : Module 3 wrap-up (04-intermediate topics interleaved)
-Next up     : git revert / git reset  →  .gitignore  →  forking & PRs
+Completed   : git stash ✅ — git revert/reset OPENED (concept only, no commands run yet)
+Current     : git revert / git reset — mid-session, resume at the "create oops.txt" step
+Next up     : finish revert/reset  →  .gitignore  →  forking & PRs
 Guidance    : HIGH
 Blockers    : none
 Notes       : Ram wants fewer basics re-covered and trickier probing questions
@@ -149,6 +149,24 @@ Notes       : Ram wants fewer basics re-covered and trickier probing questions
 ---
 
 ## 📓 Session Log (newest first)
+
+### 2026-09-20 (revert/reset opened, paused mid-scenario)
+- `~/githubrtesting` clean on `main`, up to date with origin.
+- Opened `git revert` vs `git reset` with a scenario question (bad commit
+  already pushed, ArgoCD/colleague has pulled it — hide it or record the
+  undo?). Ram chose "record the undo" with two correct reasons, unprompted:
+  audit trail / code integrity, and "what about users who already pulled
+  it" plus peer review of the fix. No hints needed.
+- Named them: revert = new inverse commit (safe on shared history);
+  reset = move branch pointer back (rewrites history, local-only). Gave
+  the rule "revert public, reset private".
+- **Nothing run hands-on yet.** Paused right before the first step: Ram
+  was asked to create one "mistake" commit adding `oops.txt` on `main` and
+  show `git log --oneline -3`. Resume there.
+- Plan after that: `git revert <hash>` first, read the log/graph; then
+  `reset --soft` / `--mixed` / `--hard` mapped onto the 3-stage model he
+  already has; then the "what happens if you reset a pushed commit"
+  probe. Untick/tick Module 4 boxes as each is done.
 
 ### 2026-09-20 (resume, later same day)
 - On resume, found an uncommitted change in `dummy.html` on `test-branch`
