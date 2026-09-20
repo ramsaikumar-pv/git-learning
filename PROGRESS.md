@@ -67,12 +67,12 @@
 
 ## 🔧 04 — Intermediate
 
-- [ ] `git diff` — unstaged changes
-- [ ] `git diff --staged` — staged vs last commit
-- [ ] `git diff <commit1> <commit2>` — compare commits
-- [ ] `git stash` — shelve uncommitted work
-- [ ] `git stash pop` — restore stashed work
-- [ ] `git stash list` — see all stashes
+- [x] `git diff` — unstaged changes
+- [x] `git diff --staged` — staged vs last commit
+- [x] `git diff <commit1> <commit2>` — compare commits
+- [x] `git stash` — shelve uncommitted work
+- [x] `git stash pop` — restore stashed work
+- [x] `git stash list` — see all stashes
 - [ ] Named stashes: `git stash push -m "name"`
 - [ ] `git revert <commit>` — safe undo (creates new commit)
 - [ ] `git reset --soft` — undo commit, keep changes staged
@@ -132,14 +132,75 @@
 ## 📅 Last Session
 
 ```
-Date        : August 2026
-Completed   : Merge conflicts (hands-on) ✅ — all module READMEs rewritten for beginner clarity ✅
-Current     : 03-remotes — forking and PRs
-Next up     : git diff, git stash
+Date        : 2026-09-20
+Completed   : git stash (stash/pop/apply/drop, branch-scoping, stash-caused conflicts) ✅
+Current     : Module 3 wrap-up (04-intermediate topics interleaved)
+Next up     : git revert / git reset  →  .gitignore  →  forking & PRs
+Guidance    : HIGH
 Blockers    : none
-Notes       : Module 3 graded assessment added (03-remotes/04-assessment) — complete it after
-               forking + PRs, before starting 04-intermediate
+Notes       : Ram wants fewer basics re-covered and trickier probing questions
+              once a mechanic is shown solid (see CLAUDE.md "How Ram Learns").
 ```
 
-> Update the block above after every session.
-> Keep it honest — this is your source of truth when you come back after a break. 📌
+> Update the block above after every session, then add a dated entry to the
+> session log below. Keep it honest — this is the source of truth when you
+> come back after a break. 📌
+
+---
+
+## 📓 Session Log (newest first)
+
+### 2026-09-20 (resume, later same day)
+- On resume, found an uncommitted change in `dummy.html` on `test-branch`
+  left over from the prior `stash apply` demo (apply had left the change in
+  the working dir but the stash list was already empty — nothing to
+  pop/drop). Confirmed with Ram it was leftover practice, not new work.
+- Ram committed it himself: `738b9cb "this is a demonstration for the git
+  stash related changes"` on `test-branch`. Tree clean, on `main`.
+- Guidance level: HIGH.
+- Housekeeping: moved all progress tracking out of `CLAUDE.md` into this
+  file. `CLAUDE.md` now only holds the stable mentor guide + a mandatory
+  pointer here.
+- Paused before starting `git revert` / `git reset` — still the next topic.
+
+### 2026-09-20 — `git stash`
+- All hands-on in `~/githubrtesting` on `main` and `test-branch`.
+- Discovered (didn't just recall) why `git switch`/`checkout` refuses when
+  uncommitted changes conflict with the target branch's committed version
+  ("would be overwritten by checkout"); ran `git stash` to see it clear the
+  working dir.
+- Proved stashes are **not branch-scoped** by popping a main-based stash
+  onto `test-branch`, triggering a real merge conflict, then resolved it
+  solo (add/commit).
+- Isolated `pop` vs `apply` vs `drop` experimentally: clean pop auto-drops,
+  conflicted pop keeps the entry, apply never removes it, drop discards
+  without applying. Stated the distinction correctly unprompted. Solid.
+- Correction logged: a prior "Ram's Own Analogies" table in `CLAUDE.md` had
+  fabricated attribution — those were Claude-generated suggestions never
+  validated with Ram. Fixed; Ram called this out directly. Don't repeat.
+- Not yet done: named stashes (`git stash push -m`) — quick, fold into a
+  later session.
+
+### 2026-09-19 — refresher + `git diff`
+- Long break → full refresher: VCS basics, staging vs `.gitignore`, 3-stage
+  workflow, `git log`/`--oneline`, branching, `git switch -c`. Then a fresh
+  merge conflict created and resolved end-to-end; `git log --graph` read
+  back correctly on second pass.
+- `git diff` dedicated session: unstaged vs `--staged` vs last commit,
+  arbitrary commits (`HEAD~1`, two hashes). Independently discovered that
+  argument order controls diff direction (`+`/`-` flip). Solid.
+- Learning-style request: stop revisiting demonstrated basics; ask trickier
+  "what happens if…" questions instead. Calibrate up incrementally.
+- All practice commits pushed to `origin/main`.
+
+### August 2026 — merge conflicts
+- Merge conflicts hands-on: created conflict, resolved in `vi`, staged and
+  committed the resolution, visualised with `git log --graph` 🎉
+- All module READMEs rewritten for beginner clarity.
+- Module 3 graded assessment added (`03-remotes/04-assessment`) — complete
+  after forking + PRs, before starting `04-intermediate` proper.
+
+### Earlier
+- Foundations, branching, remotes basics, SSH setup — see checkboxes above.
+- Ram spotted commit hashes unprompted in `git log`; loved `git log --graph`
+  ("it's beautiful!").

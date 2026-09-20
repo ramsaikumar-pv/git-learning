@@ -2,6 +2,7 @@
 
 ## 🗂️ What This Repo Is
 A personal, self-paced Git learning project for Ram Sai Kumar (GitHub: ramsaikumar-pv).
+Progress is tracked in `PROGRESS.md` — read it first every session.
 Structured as a course — numbered category directories, each with sub-modules.
 Designed to grow: new modules slot into existing categories, new categories
 get the next number.
@@ -17,7 +18,7 @@ get the next number.
 - **Environment:** Ubuntu Linux (WSL), editor: `vi`, local repo: `~/githubrtesting`
 - **SSH:** `~/.ssh/id_ed25519` (ed25519) — confirmed working ✅
 - **Starting level:** Zero Git knowledge (began here)
-- **Current level:** Early-intermediate (see Progress section below)
+- **Current level:** Early-intermediate (see `PROGRESS.md`)
 - **Target level:** Intermediate to advanced
 - **Course companion:** Meta "Introduction to Version Control" (Coursera)
   + Head First Git book
@@ -105,70 +106,20 @@ it as his.
 
 ---
 
-## 📍 Current Progress (update this section after every session)
+## 📍 Progress Tracking — MANDATORY
 
-### ✅ Completed (hands-on confirmed)
-- VCS concepts — what Git is, distributed vs centralised
-- `git init`, `git status`, `git add`, `git commit`, `git log`
-- `git log --oneline`, `git log --graph` (Ram loved this — "it's beautiful!")
-- The 3-stage workflow: Working Dir → Staging → Repo
-- Branching: `git switch -c`, `git switch`, `git branch`, `git merge`, `git branch -d`
-- Remotes: `git remote add`, `git push -u`, `git push`, `git pull`, `git fetch`
-- SSH setup (ed25519 key, config, verified with `ssh -T git@github.com`)
-- Commit hashes (SHA-1) — Ram spotted this unprompted in `git log`
-- Merge conflicts — full hands-on: created conflict, resolved in `vi`,
-  staged and committed resolution, visualised with `git log --graph` 🎉
-- Merge conflicts — **re-confirmed after a long break** (2026-09-19):
-  full refresher (VCS basics, staging vs `.gitignore`, 3-stage workflow,
-  `git log`/`--oneline`, branching commands, `git switch -c`) then a fresh
-  hands-on conflict created and resolved end-to-end, `git log --graph`
-  read back correctly on second pass. `git diff` came up naturally as a
-  preview tool while staging.
-- All practice commits from the 2026-09-19 refresher session pushed to
-  `origin/main`.
+**All progress lives in `PROGRESS.md`, not here.** This file is the stable
+mentor guide; `PROGRESS.md` is the changing record.
 
-### 🔄 Remaining (Module 3)
-- [x] `git diff` — dedicated session 2026-09-19: unstaged vs `--staged` vs
-      `--staged`/last-commit, comparing arbitrary commits (`HEAD~1`, two
-      commit hashes), and independently discovered that argument order
-      controls diff direction (`+`/`-` flip). Solid.
-- [x] `git stash` — dedicated session 2026-09-20, all hands-on in
-      `~/githubrtesting`: discovered (didn't just recall) why `git
-      switch`/`checkout` refuses when uncommitted changes conflict with the
-      target branch's committed version ("would be overwritten by
-      checkout"); ran `git stash` to see it clear the working dir; proved
-      stashes are **not branch-scoped** by popping a main-based stash onto
-      test-branch and triggering a real merge conflict, then resolved it
-      solo (add/commit) using conflict-resolution skills from before; then
-      isolated `pop` vs `apply` vs `drop` experimentally (clean pop
-      auto-drops, conflicted pop keeps the entry, apply never removes it,
-      drop discards without ever applying) and stated the distinction
-      correctly unprompted. Solid — no gaps.
-- [ ] `git revert` / `git reset`
-- [ ] `.gitignore`
-- [ ] Forking & pull requests (GitHub workflow)
-- [ ] More complex merge conflict scenarios (multiple files/hunks, rebase
-      conflicts) — Ram flagged wanting more practice here beyond the basic case
-
-### ⏳ Pending
-- Module 4 — Graded assessment (do after all Module 3 topics)
-- Everything in `04-intermediate/` and beyond
-
-### 📅 Last session
-- Last completed: `git stash` (`stash`/`pop`/`apply`/`drop`, branch-scoping,
-  stash-caused merge conflicts) — full hands-on in `~/githubrtesting` on
-  `main` and `test-branch`, ended session solid with no gaps
-- Current module: 03-remotes / continuing Module 3 — next up: `git revert`
-  / `git reset`
-- Learning style update (still active): Ram wants fewer basics re-covered,
-  trickier questions going forward (see "How Ram Learns" above)
-- Correction from this session: a prior "Ram's Own Analogies" table had
-  fabricated attribution — those were Claude-generated suggestions never
-  validated with Ram, not things he actually said. Fixed in this file (see
-  the "Analogy Ideas" section above) — don't repeat this. Ram called this
-  out directly during the session.
-- Open questions: none noted
-- Date: 2026-09-20
+- **Session start:** read `PROGRESS.md` *before anything else* — the
+  "Last Session" block tells you where to resume, the checkboxes tell you
+  what's confirmed hands-on, and the Session Log holds gaps, corrections
+  and learning-style notes.
+- **Session end (or whenever Ram pauses):** update `PROGRESS.md` — tick
+  boxes, refresh "Last Session", add a dated Session Log entry. Do **not**
+  add progress notes to this file.
+- Only edit this file when the *way* Ram learns changes (style, guidance
+  level defaults, analogy rules, repo structure).
 
 ---
 
@@ -227,10 +178,11 @@ To add a new category: create `08-<topic>/` and update INDEX.md + PROGRESS.md.
 
 ## 🚦 Session Startup Checklist
 
+0. Read `PROGRESS.md` (mandatory, see above)
 1. Ask Ram: *"What did you last cover, and what do you remember about it?"*
 2. Don't assume — verify hands-on vs just read
 3. Ground the session: `cd ~/githubrtesting && git status`
-4. Check `PROGRESS.md` for current module
+4. (Already done in step 0 — `PROGRESS.md` was read before anything else)
 5. One concept → one command → wait for output → next
 
 ---
